@@ -105,7 +105,7 @@ class DronePlayer(AirSimClient):
                                         "y/[n]: ".format(name))
 
             if view_setting.strip().lower() == 'y':
-                self.getImageForCamera(0, cam_view)
+                self.simGetImage(0, cam_view)
 
     def loop_arm(self):
         """ Attempts to arm the drone until successful, or until the user gives
@@ -422,7 +422,7 @@ class PEGameApp(object):
         self._master.after(1, self.chase)
 
 if __name__ == "__main__":
-    drone = DronePlayer("10.33.68.87", 41451)
+    drone = DronePlayer("10.33.68.87", 41452)
     drone.start()
                 
 
