@@ -50,7 +50,7 @@ class DronePlayer(AirSimClient):
 
     def start(self):
         #self._get_GPS_location()
-        self.set_views()
+        #self.set_views()
 
         arm_result = self.loop_arm()
         if (arm_result < 0):
@@ -178,7 +178,12 @@ class DronePlayer(AirSimClient):
 
             self.moveByVelocityZ(x_velocity, y_velocity, height, duration,\
                     DrivetrainType.MaxDegreeOfFreedom, YawMode(False, yaw_angle))
-            time.sleep(delay)
+
+
+            for i in range(10):
+                pos = self.getPosition()
+                print(pos)
+                time.sleep(delay/10)
 
         self.hover()
             
@@ -422,7 +427,7 @@ class PEGameApp(object):
         self._master.after(1, self.chase)
 
 if __name__ == "__main__":
-    drone = DronePlayer("10.33.68.87", 41452)
+    drone = DronePlayer("10.33.68.87", 41451)
     drone.start()
                 
 
